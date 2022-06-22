@@ -165,6 +165,7 @@ namespace Pathfinding_on_a_2D_grid
             int a = 0;
             int b = 0;
             List<String> listPath = new List<string>();
+            listPath.Add("(0, 0)");
 
             int movement = 1;
             bool foundGoal = false;
@@ -434,7 +435,7 @@ namespace Pathfinding_on_a_2D_grid
             {
                 Console.Write(str + ", ");
             }
-            Console.Write("number of steps = " + listPath.Count);
+            Console.Write("number of steps = " + (listPath.Count - 1));
 
             Console.ReadKey();
         }
