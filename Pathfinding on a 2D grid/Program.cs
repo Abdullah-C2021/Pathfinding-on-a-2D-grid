@@ -83,6 +83,30 @@ namespace Pathfinding_on_a_2D_grid
             grid[pA, pB] = dot;
         }
 
+        // Method to display obstacle information
+        static void obstacleInfo(List<String> pListObstacles)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Obstacle positions:");
+            foreach (string str in pListObstacles)
+            {
+                Console.Write(str + ", ");
+            }
+            Console.WriteLine("number of obstacles added = 20");
+        }
+
+        // Method to display path information
+        static void pathInfo(List<String> pListPath)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Vehicle path:");
+            foreach (string str in pListPath)
+            {
+                Console.Write(str + ", ");
+            }
+            Console.Write("number of steps = " + (pListPath.Count - 1));
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Amazon Coding Challenge - Pathfinding on a 2D Grid");
@@ -403,39 +427,24 @@ namespace Pathfinding_on_a_2D_grid
                 listPath.Add(newPos);
 
                 displayGrid(grid);
-                //Thread.Sleep(100);
 
                 if (newPos == "(0, 0)")
                 {
                     Console.WriteLine("Unable to reach delivery point");
+                    obstacleInfo(listObstacles);
+
                     break;
                 }
 
                 if (grid[a, b] == grid[9, 9])
                 {
                     Console.WriteLine("You have reached your delivery point");
+                    obstacleInfo(listObstacles);
+                    pathInfo(listPath);
+
                     foundGoal = true;
-                    break;
                 }
             }
-
-            // Display obstacle information
-            Console.WriteLine("");
-            Console.WriteLine("Obstacle positions:");
-            foreach (string str in listObstacles)
-            {
-                Console.Write(str + ", ");
-            }
-            Console.WriteLine("number of obstacles added = 20");
-
-            // Display path information
-            Console.WriteLine("");
-            Console.WriteLine("Vehicle path:");
-            foreach (string str in listPath)
-            {
-                Console.Write(str + ", ");
-            }
-            Console.Write("number of steps = " + (listPath.Count - 1));
 
             Console.ReadKey();
         }
